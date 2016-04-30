@@ -1,9 +1,12 @@
 #!/usr/local/bin/python2.7 -B
-import pre_exec 
+from pre_process import pre_process
 from decoder import Decoder
-import post_exec
+from post_process import post_process
 
-sentence = raw_input()
+sentence = raw_input() # Got the one sentence
 
+sentence = pre_process(sentence)
 decoder = Decoder()
-print(decoder.decode(sentence))
+sentence = decoder.decode(sentence)
+sentence = post_process(sentence)
+print(sentence)
