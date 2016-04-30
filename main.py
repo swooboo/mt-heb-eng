@@ -1,4 +1,6 @@
 #!/usr/local/bin/python2.7 -B
+import sys
+sys.dont_write_bytecode = True # No .pyc cluttering.
 from pre_process import pre_process
 from decoder import Decoder
 from post_process import post_process
