@@ -1,0 +1,6 @@
+{
+	"name": "moses",
+	"host": "localhost",
+	"port": 8080,
+	"start_cmd": "~/mosesdecoder/bin/moses -f ~/working/binarised-model/moses.ini --daemon --server --server-port @port"
+}
