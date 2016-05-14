@@ -1,11 +1,11 @@
 import json
-import urllib2
+import xmlrpclib
+import os 
 
 '''
 Decoder wrapper. This class is responsible for conversing with the translation model.
 '''
 class Decoder:
-	'The decoder interface class for decoding ready sentences'
 	def __init__(self):
 		self.src = 'en'
 		self.dest = 'he'
@@ -14,9 +14,10 @@ class Decoder:
 		self.init_server(config)	# Checking whether the server is up and starting if needed.
 	
 	def init_server(self, config):
-		response = urllib2.urlopen(config['host'] + ':' + str(config['port']))
-		html = response.read()
+		os.system(config['start_cmd']) # Making sure Moses server is up
+		self.server = xmlrpclib.ServerProxy(config['host']) # Created a server object for the decoder
 
 	'Gets tokens, returns translated tokens from the translation model'
 	def decode(self, tokens):
-		return tokens
+		translation = self.server.translate({'text': tokens})
+		return translation['text']
