@@ -1,8 +1,5 @@
 {
 	"name": "moses",
-	"host": "http://localhost",
-	"port": 8080,
-	"path": "/RPC2",
-	"method": "POST",
-	"start_cmd": "~/mosesdecoder/bin/moses -f ~/working/binarised-model/moses.ini --daemon --server --server-port @port"
+	"host": "http://localhost:8080/RPC2",
+	"start_cmd": "~/mosesdecoder/bin/moses -f ~/working/binarised-model/moses.ini --daemon --server --server-log ~/moses.log 2>>~/moses.log"
 }
