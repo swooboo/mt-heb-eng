@@ -1,11 +1,15 @@
 $("input#go").click(function(){
 	req = {};
-	req.sentence = $("input#source").val();
+	req.sentence = $("textarea#source").val();
 	$.ajax({
 		url: "/tr",
 		type: "POST",
 		data: req,
-		success: function(resp){ $("input#target").val(resp.sentence); },
-		error: function(){ alert("AJAX to '/tr' with sentence '" + req.sentence + "' failed."); }
+		success: function(resp){ $("textarea#target").val(resp.sentence); },
+		error: function(){ console.log("AJAX to '/tr' with sentence '" + req.sentence + "' failed."); }
 	})
 })
+
+$("form#tr").submit(function(){
+	return false;
+});
