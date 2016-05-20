@@ -15,6 +15,7 @@ class Decoder:
 	
 	def init_server(self, config):
 		if 0 != os.system(config['check_cmd']):	# Checking if there is a moses process running
+			print("Moses daemon appears to be down. Attempting to start with command `" + config['start_cmd'] + "`.")
 			os.system(config['start_cmd']) # Making sure Moses server is up
 		self.server = xmlrpclib.ServerProxy(config['host']) # Created a server object for the decoder
 
