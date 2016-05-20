@@ -9,7 +9,7 @@ class Decoder:
 	def __init__(self):
 		self.src = 'en'
 		self.dest = 'he'
-		with open('decoder.config.json') as config_file:
+		with open('moses.config.json') as config_file:
 			config = json.load(config_file)	# Loaded the configuration JSON.
 		self.init_server(config)	# Checking whether the server is up and starting if needed.
 	
