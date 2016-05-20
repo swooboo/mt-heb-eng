@@ -14,7 +14,8 @@ class Decoder:
 		self.init_server(config)	# Checking whether the server is up and starting if needed.
 	
 	def init_server(self, config):
-		os.system(config['start_cmd']) # Making sure Moses server is up
+		if 0 != os.system(config['check_cmd']):	# Checking if there is a moses process running
+			os.system(config['start_cmd']) # Making sure Moses server is up
 		self.server = xmlrpclib.ServerProxy(config['host']) # Created a server object for the decoder
 
 	'Gets tokens, returns translated tokens from the translation model'
