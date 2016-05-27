@@ -1,7 +1,7 @@
 defer(function(){ // Waiting for jQuery
 	$("#source").focus();	// Focus on the source input
 	
-	$("input#go").click(function(){	// Button sends AJAX to retrieve translation
+	$("form#tr").submit(function(){	// Don't submit form, instead send AJAX to retrieve translation
 		req = {};
 		req.sentence = $("textarea#source").val();
 		$.ajax({
@@ -11,15 +11,13 @@ defer(function(){ // Waiting for jQuery
 			success: function(resp){ $("textarea#target").val(resp.sentence); },
 			error: function(){ console.log("AJAX to '/tr' with sentence '" + req.sentence + "' failed."); }
 		});
-	});
 
-	$("form#tr").submit(function(){	// Don't submit form
 		return false;
 	});
 
 	$('#source').keydown(function (e){
 		if (e.ctrlKey && e.keyCode == 13)	// Submitting on CTRL+Enter
-			 $("input#go").click();
+			 $("form#tr").submit();
 	});
 });
 
