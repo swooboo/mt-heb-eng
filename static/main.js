@@ -1,3 +1,7 @@
+defer(function(){ // Waiting for jQuery
+	$("#source").focus();	// Focus on the source input
+});
+
 $("input#go").click(function(){
 	req = {};
 	req.sentence = $("textarea#source").val();
@@ -13,3 +17,10 @@ $("input#go").click(function(){
 $("form#tr").submit(function(){
 	return false;
 });
+
+function defer(method) { // Function that waits for jQuery, then executes method
+	if (window.jQuery)
+		method();
+	else
+		setTimeout(function() { defer(method) }, 50);
+}
