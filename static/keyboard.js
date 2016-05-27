@@ -12,7 +12,7 @@ defer(function(){ // Waiting for jQuery
 	
 
 	$("#source").keypress(function(evt) { // Overriding default key press to transliterate English key strokes to hebrew letters
-		if (evt.which) {
+		if (evt.which && !evt.ctrlKey) {	// Will try to translate if there is a key press and no CTRL pressed.
 			var charStr = String.fromCharCode(evt.which).toLowerCase();
 			var transformedChar = translateChar(charStr);
 			if (transformedChar != charStr) {	// If transliteration is indeed needed - paste the char and don't do the default keypress behavior
