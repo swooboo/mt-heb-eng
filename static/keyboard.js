@@ -1,0 +1,34 @@
+// This script helps with transliteration - Hebrew can be typed even if there is no Hebrew layout available
+
+defer(function(){ // Waiting for jQuery
+	str = 'aשbנcבdגeקfכgעhיiןjחkלlךmצnמoםpפq/rרsדtאuוvהw\'xסyטzז,ת.ץ/.;ף\','; // Preparing character transliteration
+	dict = {};
+	str.split('').reduce(function(a,b,i,arr){	// Some magic - reducing the above string to key-value pairs.
+		if(i%2) dict[a] = b;
+		return b;
+	});	// After this, dict = {a:'ש', b:'נ', ...}
+
+	function translateChar(char){ return char in dict ? dict[char] : char; }	// Translating known keys to hebrew.
+	
+
+	$("#source").keypress(function(evt) { // Overriding default key press to transliterate English key strokes to hebrew letters
+		if (evt.which) {
+			var charStr = String.fromCharCode(evt.which).toLowerCase();
+			var transformedChar = translateChar(charStr);
+			if (transformedChar != charStr) {	// If transliteration is indeed needed - paste the char and don't do the default keypress behavior
+				this.paste(transformedChar);
+				return false;
+			}
+		}
+	});
+
+	HTMLTextAreaElement.prototype.paste = function(text){	// Defining a function that will paste into text areas, respecting selection
+		with(this){
+			newCursorPos = selectionStart + text.length;	// This will be the new caret position
+			value = value.substring(0, selectionStart) + text + value.substring(selectionEnd);
+			selectionStart = selectionEnd = newCursorPos;	// Restoring caret position
+		}
+	};
+});
+
+
