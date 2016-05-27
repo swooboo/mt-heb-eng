@@ -1,2 +1,2 @@
 # mt-heb-eng
-Machine translation - Hebrew &lt;-> English
+Machine translation - Hebrew ↔ English
