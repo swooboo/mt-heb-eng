@@ -1,3 +1,15 @@
 #source{
 	direction: rtl;
 }
+
+form#tr{
+	height: 50px;
+}
+
+form#tr>*, form#tr textarea{
+	height: 100%;
+}
+
+form#tr textarea{
+	width: 300px;
+}
