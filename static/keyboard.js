@@ -11,7 +11,7 @@ function translateChar(char){ return char in dict ? dict[char] : char; }	// Tran
 defer(function(){ // Waiting for jQuery
 
 	$("[data-keyboard=he]").keypress(function(evt) { // Overriding default key press to transliterate English key strokes to hebrew letters
-		if (evt.which && !evt.ctrlKey) {	// Will try to translate if there is a key press and no CTRL pressed.
+		if (evt.which && !evt.ctrlKey && !$(this).hasClass("suppress-keyboard")) {	// Will try to translate if there is a key press and no CTRL pressed.
 			var charStr = String.fromCharCode(evt.which);
 			var transformedChar = translateChar(charStr);
 			if (transformedChar != charStr) {	// If transliteration is indeed needed - paste the char and don't do the default keypress behavior
@@ -19,6 +19,15 @@ defer(function(){ // Waiting for jQuery
 				return false;
 			}
 		}
+	});
+
+	// Adding a checkbox to turn transliteration off if needed
+	$("[data-keyboard=he]")
+		.wrap("<div style='display: inline-block; position: relative;' class='keyboard-wrapper'>")	// Wrapping the inputs with the div
+		.after("<input type='checkbox' style='position: absolute; bottom:5px; left: 5px; opacity: 0.5;' checked='true'>")	// Adding the checkbox
+		.after("<label style='position: absolute; bottom:5px; left: 25px; opacity: 0.5;' >a→ש</label>");	// Adding the label for it
+	$(".keyboard-wrapper input").click(function(){
+		$(this).parent().find("[data-keyboard=he]").toggleClass("suppress-keyboard");	// Adding class to cancel transliteration	
 	});
 
 	$.prototype.paste = function(text){	// Defining a function that will paste into text areas, respecting selection
