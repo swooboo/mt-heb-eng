@@ -15,3 +15,5 @@ function xcleanout {
 	done
 	echo Done. Cleaned all *xml* and *tags* files in ./, clean files in ./clean/.
 }
+
+xcleanout	# Run the main function
