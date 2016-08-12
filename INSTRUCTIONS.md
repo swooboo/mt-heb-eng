@@ -4,14 +4,16 @@ For all the below steps - document each step, which files were used, which actio
 
 ### Download and clean the corpus:
 
-* Download the corpus, I used http://wit3.fbk.eu/archive/2014-01//texts/he/en/he-en.tgz
+* `mkdir ~/corpus ;cd ~corpus`
+* Download the corpus, I used [this HE-EN corpus](http://wit3.fbk.eu/archive/2014-01//texts/he/en/he-en.tgz):
+	* `wget https://wit3.fbk.eu/archive/2014-01//texts/he/en/he-en.tgz`
 * Extract it:
-	* `tar -xzvf he-en.tgz`
+	* `tar -xzvf he-en.tgz ;mv he-en training`
 * Change directory to the extracted location:
-	* `cd he-en`
+	* `cd training`
 * Clean XML and tags files:
 	* `~/translator/xcleanup.sh`
-	* This will create a `he-en/clean/` directory with the cleaned files
+	* This will create a `trainig/clean/` directory with the cleaned files
 * Divide the files by roles, take a side note. We will need files for:
 	* Sentences for training (biggest set)
 	* Sentences for tuning (smallest set)
@@ -21,6 +23,7 @@ For all the below steps - document each step, which files were used, which actio
 
 * Tutorial taken from the [Moses website](http://www.statmt.org/moses/?n=Moses.Baseline)
 	* In the tutorial, a French → English model was trained. We will train Hebrew → English instead.
+	* Assuming Moses is installed in `~/mosesdecoder` directory.
 * Tokenize the sentences:
 	* ` ~/mosesdecoder/scripts/tokenizer/tokenizer.perl -l en \`
 	* `< ~/corpus/training/news-commentary-v8.fr-en.en    \`
