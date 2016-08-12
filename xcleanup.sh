@@ -13,7 +13,7 @@ function xcleanout {
 		echo Cleaning file $f, clean file will be ./clean/$f.clean
 		xclean $f >clean/$f.clean	# xCleaning each file
 	done
-	echo Done. Cleaned all *xml* and *tags* files in ./, clean files in ./clean/.
+	echo Done. Cleaned all '*xml* and *tags*' files in ./, clean files in ./clean/.
 }
 
 xcleanout	# Run the main function
