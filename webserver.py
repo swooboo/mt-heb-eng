@@ -17,8 +17,8 @@ def tr():
 		sentence = translate(sentence)	# Translating from the main.translate() function.
 		return json.jsonify(sentence=sentence)
 	except socket_error as error:
-		print "Exception socket_error: " + str(type(error))
-		return json.jsonify(error="couldn't translate")
+		print "Exception socket_error: " + str(error)
+		return json.jsonify(error=str(error))
 
 if __name__ == "__main__":
 	app.debug = True	# Debugging.
