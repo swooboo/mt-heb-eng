@@ -13,6 +13,8 @@ def index():
 @app.route("/tr", methods=['POST', 'GET'])
 def tr():
 	sentence = request.form.get("sentence")	# Got the sentence.
+	if request.method == "GET":
+		sentence = request.args.get("sentence") # Overriding for GET
 	try:
 		sentence = translate(sentence)	# Translating from the main.translate() function.
 		return json.jsonify(sentence=sentence)
