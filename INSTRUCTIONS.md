@@ -25,9 +25,9 @@ For all the below steps - document each step, which files were used, which actio
 	* In the tutorial, a French → English model was trained. We will train Hebrew → English instead.
 	* Assuming Moses is installed in `~/mosesdecoder` directory.
 * Tokenize the sentences:
-	* ` ~/mosesdecoder/scripts/tokenizer/tokenizer.perl -l en \`
-	* `< ~/corpus/training/news-commentary-v8.fr-en.en    \`
-	* `> ~/corpus/news-commentary-v8.fr-en.tok.en`
-	* `~/mosesdecoder/scripts/tokenizer/tokenizer.perl -l fr \`
-	* `< ~/corpus/training/news-commentary-v8.fr-en.fr    \`
-	* `> ~/corpus/news-commentary-v8.fr-en.tok.fr`
+	* `for file in ~/corpus/training/clean/*he-en.en*`
+	* `do`
+	* `~/mosesdecoder/scripts/tokenizer/tokenizer.perl -l en \`
+	* `<$file \`
+	* `>~/corpus/\`basename $file\`.tok`
+	* `done`
