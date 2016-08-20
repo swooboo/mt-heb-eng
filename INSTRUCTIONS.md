@@ -22,16 +22,16 @@ For all the below steps - document each step, which files were used, which actio
 
 | File name                                                                    | # of sentences | Lang.    | Role   |
 |------------------------------------------------------------------------------|----------------|:--------:|:------:|
-| `~/corpus/training/clean/IWSLT14.TED.dev2010.he-en.en.xml.clean` | 949            | EN       | test   |
-| `~/corpus/training/clean/IWSLT14.TED.dev2010.he-en.he.xml.clean` | 949            | HE       | test   |
-| `~/corpus/training/clean/IWSLT14.TED.tst2010.he-en.en.xml.clean` | 1650           | EN       | test   |
-| `~/corpus/training/clean/IWSLT14.TED.tst2010.he-en.he.xml.clean` | 1650           | HE       | test   |
-| `~/corpus/training/clean/IWSLT14.TED.tst2011.he-en.en.xml.clean` | 1553           | EN       | tune   |
-| `~/corpus/training/clean/IWSLT14.TED.tst2011.he-en.he.xml.clean` | 1553           | HE       | tune   |
-| `~/corpus/training/clean/IWSLT14.TED.tst2012.he-en.en.xml.clean` | 1812           | EN       | tune   |
-| `~/corpus/training/clean/IWSLT14.TED.tst2012.he-en.he.xml.clean` | 1812           | HE       | tune   |
-| `~/corpus/training/clean/train.tags.he-en.en.clean`              | 192185         | EN       | train  |
-| `~/corpus/training/clean/train.tags.he-en.he.clean`              | 192185         | HE       | train  |
+| `~/corpus/training/clean/IWSLT14.TED.dev2010.he-en.en.xml.clean`             | 949            | EN       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.dev2010.he-en.he.xml.clean`             | 949            | HE       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2010.he-en.en.xml.clean`             | 1650           | EN       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2010.he-en.he.xml.clean`             | 1650           | HE       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2011.he-en.en.xml.clean`             | 1553           | EN       | tune   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2011.he-en.he.xml.clean`             | 1553           | HE       | tune   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2012.he-en.en.xml.clean`             | 1812           | EN       | tune   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2012.he-en.he.xml.clean`             | 1812           | HE       | tune   |
+| `~/corpus/training/clean/train.tags.he-en.en.clean`                          | 192185         | EN       | train  |
+| `~/corpus/training/clean/train.tags.he-en.he.clean`                          | 192185         | HE       | train  |
 
 ### Prepare the corpus for Moses training:
 
@@ -123,6 +123,7 @@ For all the below steps - document each step, which files were used, which actio
 	  | ~/mosesdecoder/bin/query ~/working/lm/train.tags.he-en.clean.tok.true.clean.blm.en
 	```
  * The example above should yield the output below:
+ 
 		```
 		$ echo "is this an English sentence ?" \
 		>   | ~/mosesdecoder/bin/query ~/working/lm/train.tags.he-en.clean.tok.true.clean.blm.en
