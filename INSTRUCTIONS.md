@@ -22,14 +22,14 @@ For all the below steps - document each step, which files were used, which actio
 
 | File name                                                                    | # of sentences | Lang.    | Role   |
 |------------------------------------------------------------------------------|----------------|:--------:|:------:|
-| `~/corpus/training/clean/IWSLT14.TED.dev2010.he-en.en.xml.clean`             | 949            | EN       | test   |
-| `~/corpus/training/clean/IWSLT14.TED.dev2010.he-en.he.xml.clean`             | 949            | HE       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.dev2010.he-en.en.xml.clean`             | 949            | EN       | tune   |
+| `~/corpus/training/clean/IWSLT14.TED.dev2010.he-en.he.xml.clean`             | 949            | HE       | tune   |
 | `~/corpus/training/clean/IWSLT14.TED.tst2010.he-en.en.xml.clean`             | 1650           | EN       | test   |
 | `~/corpus/training/clean/IWSLT14.TED.tst2010.he-en.he.xml.clean`             | 1650           | HE       | test   |
-| `~/corpus/training/clean/IWSLT14.TED.tst2011.he-en.en.xml.clean`             | 1553           | EN       | tune   |
-| `~/corpus/training/clean/IWSLT14.TED.tst2011.he-en.he.xml.clean`             | 1553           | HE       | tune   |
-| `~/corpus/training/clean/IWSLT14.TED.tst2012.he-en.en.xml.clean`             | 1812           | EN       | tune   |
-| `~/corpus/training/clean/IWSLT14.TED.tst2012.he-en.he.xml.clean`             | 1812           | HE       | tune   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2011.he-en.en.xml.clean`             | 1553           | EN       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2011.he-en.he.xml.clean`             | 1553           | HE       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2012.he-en.en.xml.clean`             | 1812           | EN       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2012.he-en.he.xml.clean`             | 1812           | HE       | test   |
 | `~/corpus/training/clean/train.tags.he-en.en.clean`                          | 192185         | EN       | train  |
 | `~/corpus/training/clean/train.tags.he-en.he.clean`                          | 192185         | HE       | train  |
 
@@ -150,3 +150,15 @@ For all the below steps - document each step, which files were used, which actio
 	 -external-bin-dir ~/mosesdecoder/tools >& training.out &
 	```
 	* Note that `-cores 24` is for 24-core server, choose the number of cores correctly.
+* Tune the translation model:
+
+	```bash
+	cd ~/working
+	nohup nice ~/mosesdecoder/scripts/training/mert-moses.pl \
+	  ~/corpus/IWSLT14.TED.dev2010.he-en.xml.clean.tok.true.clean.he \
+	  ~/corpus/IWSLT14.TED.dev2010.he-en.xml.clean.tok.true.clean.en  \
+	  ~/mosesdecoder/bin/moses ~/working/train/model/moses.ini --mertdir ~/mosesdecoder/bin/ \
+	  --decoder-flags="-threads 24" \
+	  &> mert.out &
+	```
+	* Note the `--decoder-flags="-threads 24"` is set for 24 cores, adjust accordingly.
