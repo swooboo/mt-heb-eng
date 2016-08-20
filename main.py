@@ -1,7 +1,7 @@
 #!/usr/local/bin/python2.7 -B
 import sys
-sys.dont_write_bytecode = True # No .pyc cluttering.
 reload(sys)
+sys.dont_write_bytecode = True # No .pyc cluttering.
 sys.setdefaultencoding('utf8') # UTF8 should be default, for Hebrew
 from pre_process import pre_process
 from decoder import Decoder
