@@ -82,3 +82,23 @@ For all the below steps - document each step, which files were used, which actio
 	    $common_filename.clean 1 80
 	done
 	```
+* Summing up: we have prepared our corpus for training. The final files are listed with the following command - `ls ~/corpus/*clean.??`
+
+### Training the language model
+
+* Train a 3-gram model for English language:
+
+	```bash
+	mkdir -p ~/working/lm
+ 	cd ~/working/lm
+ 	~/mosesdecoder/bin/lmplz -o 3 \
+ 	  <~/corpus/train.tags.he-en.clean.tok.true.clean.en \
+ 	  >~/working/lm/train.tags.he-en.clean.tok.true.clean.arpa.en
+ 	```
+* Binarise the model for faster queries:
+
+	```bash
+	~/mosesdecoder/bin/build_binary \
+   	  ~/working/lm/train.tags.he-en.clean.tok.true.clean.arpa.en \
+   	  ~/working/lm/train.tags.he-en.clean.tok.true.clean.blm.en
+   	```
