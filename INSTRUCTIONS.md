@@ -59,7 +59,7 @@ For all the below steps - document each step, which files were used, which actio
 	  ~/mosesdecoder/scripts/recaser/truecase.perl \
 	    --model ~/corpus/truecase-model.en \
 	    <$file \
-	    >~/corpus/`basename $file`.true.en
+	    >$file.true.en
 	done
 	
 	for file in ~/corpus/*he-en.he*
@@ -67,7 +67,7 @@ For all the below steps - document each step, which files were used, which actio
 	  ~/mosesdecoder/scripts/recaser/truecase.perl \
 	    --model ~/corpus/truecase-model.he \
 	    <$file \
-	    >~/corpus/`basename $file`.true.he
+	    >$file.true.he
 	done
 	```
  * Note that we added `.en` and `.he` to the `.true`, we will need this for the next step.
