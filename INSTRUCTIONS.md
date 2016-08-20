@@ -18,7 +18,21 @@ For all the below steps - document each step, which files were used, which actio
 	* Sentences for training (biggest set)
 	* Sentences for tuning (smallest set)
 	* Sentences for testing (validation, about 2-3% from training set)
- 
+* We will divide our data as described in the table below:
+
+| File name                                                                    | # of sentences | Lang.    | Role   |
+|------------------------------------------------------------------------------|----------------|:--------:|:------:|
+| `~/corpus/training/clean/IWSLT14.TED.dev2010.he-en.en.xml.clean` | 949            | EN       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.dev2010.he-en.he.xml.clean` | 949            | HE       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2010.he-en.en.xml.clean` | 1650           | EN       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2010.he-en.he.xml.clean` | 1650           | HE       | test   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2011.he-en.en.xml.clean` | 1553           | EN       | tune   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2011.he-en.he.xml.clean` | 1553           | HE       | tune   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2012.he-en.en.xml.clean` | 1812           | EN       | tune   |
+| `~/corpus/training/clean/IWSLT14.TED.tst2012.he-en.he.xml.clean` | 1812           | HE       | tune   |
+| `~/corpus/training/clean/train.tags.he-en.en.clean`              | 192185         | EN       | train  |
+| `~/corpus/training/clean/train.tags.he-en.he.clean`              | 192185         | HE       | train  |
+
 ### Prepare the corpus for Moses training:
 
 * Tutorial taken from the [Moses website](http://www.statmt.org/moses/?n=Moses.Baseline)
