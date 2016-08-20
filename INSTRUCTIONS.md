@@ -42,3 +42,31 @@ For all the below steps - document each step, which files were used, which actio
 	>~/corpus/`basename $file`.tok
 	done
 	```
+* Train and apply the true casing:
+
+	```bash
+	~/mosesdecoder/scripts/recaser/train-truecaser.perl \
+	--model ~/corpus/truecase-model.en --corpus \
+	~/corpus/train.tags.he-en.en.clean.tok
+	
+	~/mosesdecoder/scripts/recaser/train-truecaser.perl \
+	--model ~/corpus/truecase-model.he --corpus \
+	~/corpus/train.tags.he-en.he.clean.tok
+	```
+	```bash
+	for file in ~/corpus/*he-en.en*
+	do
+	~/mosesdecoder/scripts/recaser/truecase.perl \
+	--model ~/corpus/truecase-model.en \
+	<$file \
+	>~/corpus/`basename $file`.true
+	done
+	
+	for file in ~/corpus/*he-en.he*
+	do
+	~/mosesdecoder/scripts/recaser/truecase.perl \
+	--model ~/corpus/truecase-model.he \
+	<$file \
+	>~/corpus/`basename $file`.true
+	done
+	```
