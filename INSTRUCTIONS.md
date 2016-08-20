@@ -84,7 +84,7 @@ For all the below steps - document each step, which files were used, which actio
 	    >${file//he-en.??/he-en}.true.he
 	done
 	```
- * Note that we added `.en` and `.he` to the `.true`, and removed the language infix from `.he-en.??` we will need this for the next step - the file name pairs should be identical up until the suffix that denotes the language.
+	* Note that we added `.en` and `.he` to the `.true`, and removed the language infix from `.he-en.??` we will need this for the next step - the file name pairs should be identical up until the suffix that denotes the language.
 * Clean and limit to 80 tokens:
 
 	```bash
@@ -149,4 +149,4 @@ For all the below steps - document each step, which files were used, which actio
 	 -cores 24 \
 	 -external-bin-dir ~/mosesdecoder/tools >& training.out &
 	```
- * Note that `-cores 24` is for 24-core server, choose the number of cores correctly.
+	* Note that `-cores 24` is for 24-core server, choose the number of cores correctly.
