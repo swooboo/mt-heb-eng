@@ -102,3 +102,20 @@ For all the below steps - document each step, which files were used, which actio
    	  ~/working/lm/train.tags.he-en.clean.tok.true.clean.arpa.en \
    	  ~/working/lm/train.tags.he-en.clean.tok.true.clean.blm.en
    	```
+* Test the language model with a simple English sentence:
+
+	```bash
+	echo "is this an English sentence ?" \
+	  | ~/mosesdecoder/bin/query ~/working/lm/train.tags.he-en.clean.tok.true.clean.blm.en
+	```
+ * The example above should yield the output below:
+		```
+		$ echo "is this an English sentence ?" \
+		>   | ~/mosesdecoder/bin/query ~/working/lm/train.tags.he-en.clean.tok.true.clean.blm.en
+		is=18 2 -2.7017515      this=65 3 -0.8656755    an=188 3 -2.3518038     English=3600 2 -2.768621 sentence=7252 2 -2.3785648        ?=73 2 -2.4919968       </s>=2 3 -0.22995311    Total: -13.788365 OOV: 0
+		Perplexity including OOVs:      93.27526264042754
+		Perplexity excluding OOVs:      93.27526264042754
+		OOVs:   0
+		Tokens: 7
+		Name:query      VmPeak:74968 kB VmRSS:1676 kB   RSSMax:52468 kB user:0  sys:0.012998    CPU:0.012998 real:0.0114762
+		```
