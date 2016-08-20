@@ -84,7 +84,7 @@ For all the below steps - document each step, which files were used, which actio
 	```
 * Summing up: we have prepared our corpus for training. The final files are listed with the following command - `ls ~/corpus/*clean.??`
 
-### Training the language model
+### Training the Language Model
 
 * Train a 3-gram model for English language:
 
@@ -119,3 +119,19 @@ For all the below steps - document each step, which files were used, which actio
 		Tokens: 7
 		Name:query      VmPeak:74968 kB VmRSS:1676 kB   RSSMax:52468 kB user:0  sys:0.012998    CPU:0.012998 real:0.0114762
 		```
+
+### Training, Tuning and Testing the Translation System
+
+* Train the translation model:
+
+	```bash
+	mkdir -p ~/working
+	cd ~/working
+	nohup nice ~/mosesdecoder/scripts/training/train-model.perl -root-dir ~/working/train \
+	 -corpus ~/corpus/train.tags.he-en.clean.tok.true.clean \
+	 -f he -e en -alignment grow-diag-final-and -reordering msd-bidirectional-fe \
+	 -lm 0:3:$HOME/working/lm/train.tags.he-en.clean.tok.true.clean.blm.en:8 \
+	 -cores 24 \
+	 -external-bin-dir ~/mosesdecoder/tools >& training.out &
+	```
+ * Note that `-cores 24` is for 24-core server, choose the number of cores correctly.
