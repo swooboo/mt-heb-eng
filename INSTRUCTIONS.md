@@ -59,7 +59,7 @@ For all the below steps - document each step, which files were used, which actio
 	  ~/mosesdecoder/scripts/recaser/truecase.perl \
 	    --model ~/corpus/truecase-model.en \
 	    <$file \
-	    >~/corpus/`basename $file`.true
+	    >~/corpus/`basename $file`.true.en
 	done
 	
 	for file in ~/corpus/*he-en.he*
@@ -67,6 +67,25 @@ For all the below steps - document each step, which files were used, which actio
 	  ~/mosesdecoder/scripts/recaser/truecase.perl \
 	    --model ~/corpus/truecase-model.he \
 	    <$file \
-	    >~/corpus/`basename $file`.true
+	    >~/corpus/`basename $file`.true.he
 	done
 	```
+ * Note that we added `.en` and `.he` to the `.true`, we will need this for the next step.
+* Clean and limit to 80 tokens:
+
+	```bash
+	for file in ~/corpus/*he-en.en*clean.tok.true*
+	do
+	  mv $file ${file//he-en.??/he-en}
+	done
+	```
+	```bash
+	for file in ~/corpus/*he-en*clean.tok.true.en
+	do
+	  common_filename=${file//true.en/true}
+	  ~/mosesdecoder/scripts/training/clean-corpus-n.perl \
+	    $common_filename he en \
+	    $common_filename.clean 1 80
+	done
+	```
+ * Note that first code segment renames files so `he-en.en` and `he-en.he` will turn to `he-en`, because we need the language suffix to appear only in the end of the file name for the second code segment.
