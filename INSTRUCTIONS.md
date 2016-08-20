@@ -54,31 +54,25 @@ For all the below steps - document each step, which files were used, which actio
 	  ~/corpus/train.tags.he-en.he.clean.tok
 	```
 	```bash
-	for file in ~/corpus/*he-en.en*
+	for file in ~/corpus/*he-en.en*clean.tok
 	do
 	  ~/mosesdecoder/scripts/recaser/truecase.perl \
 	    --model ~/corpus/truecase-model.en \
 	    <$file \
-	    >$file.true.en
+	    >${file//he-en.??/he-en}.true.en
 	done
 	
-	for file in ~/corpus/*he-en.he*
+	for file in ~/corpus/*he-en.he*clean.tok
 	do
 	  ~/mosesdecoder/scripts/recaser/truecase.perl \
 	    --model ~/corpus/truecase-model.he \
 	    <$file \
-	    >$file.true.he
+	    >${file//he-en.??/he-en}.true.he
 	done
 	```
- * Note that we added `.en` and `.he` to the `.true`, we will need this for the next step.
+ * Note that we added `.en` and `.he` to the `.true`, and removed the language infix from `.he-en.??` we will need this for the next step - the file name pairs should be identical up until the suffix that denotes the language.
 * Clean and limit to 80 tokens:
 
-	```bash
-	for file in ~/corpus/*he-en.en*clean.tok.true*
-	do
-	  mv $file ${file//he-en.??/he-en}
-	done
-	```
 	```bash
 	for file in ~/corpus/*he-en*clean.tok.true.en
 	do
@@ -88,4 +82,3 @@ For all the below steps - document each step, which files were used, which actio
 	    $common_filename.clean 1 80
 	done
 	```
- * Note that first code segment renames files so `he-en.en` and `he-en.he` will turn to `he-en`, because we need the language suffix to appear only in the end of the file name for the second code segment.
