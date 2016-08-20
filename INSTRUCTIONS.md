@@ -162,3 +162,21 @@ For all the below steps - document each step, which files were used, which actio
 	  &> mert.out &
 	```
 	* Note the `--decoder-flags="-threads 24"` is set for 24 cores, adjust accordingly.
+* Test the translation system with a simple sentence. Run the following and then enter a sentence in Hebrew:
+
+	```bash
+	~/mosesdecoder/bin/moses -f ~/working/mert-work/moses.ini
+	```
+	* The system loads somewhat slowly, next step - we binarise the model for faster queries.
+* Binarise the translation model:
+
+	```bash
+	mkdir ~/working/binarised-model
+	cd ~/working
+	~/mosesdecoder/bin/processPhraseTableMin \
+	  -in ~/working/train/model/phrase-table.gz -nscores 4 \
+	  -out ~/working/binarised-model/phrase-table
+	~/mosesdecoder/bin/processLexicalTableMin \
+	  -in ~/working/train/model/reordering-table.wbe-msd-bidirectional-fe.gz \
+	  -out ~/working/binarised-model/reordering-table
+	```
