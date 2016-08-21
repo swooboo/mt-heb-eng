@@ -189,3 +189,8 @@ For all the below steps - document each step, which files were used, which actio
 		2. Set the path of the `PhraseDictionary` feature to point to `$HOME/working/binarised-model/phrase-table.minphr`
 		3. Set the path of the `LexicalReordering` feature to point to `$HOME/working/binarised-model/reordering-table`
 		4. Exit the editor and save with the following keystrokes: `^O ENTER ^X`
+* Now we can load faster and test with our favorite Hebrew sentence. Run Moses with the binarised model (faster) as follows:
+
+	```bash
+	~/mosesdecoder/bin/moses -f ~/working/binarised-model/moses.ini
+	```
