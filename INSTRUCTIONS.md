@@ -181,10 +181,14 @@ For all the below steps - document each step, which files were used, which actio
 	  -out ~/working/binarised-model/reordering-table
 	```
 	```bash
-	cp ~/working/mert-work/moses.ini ~/working/binarised-model/
-	nano ~/working/binarised-model/moses.ini
+	sed \
+	  's/PhraseDictionaryMemory/PhraseDictionaryCompact/;
+	    s/train.model.phrase-table.gz/binarised-model\/phrase-table.minphr/;
+	    s/train.model.reordering-table.wbe-msd-bidirectional-fe.gz/binarised-model\/reordering-table/' \
+	  ~/working/mert-work/moses.ini \
+	  >~/working/binarised-model/moses.ini
 	```
-	* The second code segment will copy the moses configuration file (that was generated as a result of training the translation system) to the binarised model directory and open it for editing with `nano` editor. Make the following edits:
+	* [OPTIONAL READING - this is an explanation of the `sed` command] The second code segment will modify the moses configuration file (the `moses.ini` that was generated as a result of training the translation system) to the binarised model directory after making the following edits:
 		1. Change `PhraseDictionaryMemory` to `PhraseDictionaryCompact`
 		2. Set the path of the `PhraseDictionary` feature to point to `$HOME/working/binarised-model/phrase-table.minphr`
 		3. Set the path of the `LexicalReordering` feature to point to `$HOME/working/binarised-model/reordering-table`
