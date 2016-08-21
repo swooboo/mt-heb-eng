@@ -194,3 +194,40 @@ For all the below steps - document each step, which files were used, which actio
 	```bash
 	~/mosesdecoder/bin/moses -f ~/working/binarised-model/moses.ini
 	```
+
+### Evaluating the translation system
+
+* As noted in the table in the beginning of this document, we have multiple files for testing. First, we need to 'clump' them together:
+
+	```bash
+	cd ~/working
+	mkdir -p ~/working/testing
+	cat ~/corpus/*tst*tok.true.clean.en >~/working/testing/testset.en
+	cat ~/corpus/*tst*tok.true.clean.he >~/working/testing/testset.he
+	```
+* Filter our translation model only for the sentences we want to translate - for faster results:
+
+	```bash
+	~/mosesdecoder/scripts/training/filter-model-given-input.pl \
+	  ~/working/testing/filtered-testset ~/working/mert-work/moses.ini ~/working/testing/testset.he \
+	  -Binarizer ~/mosesdecoder/bin/processPhraseTableMin
+	  -threads 24
+	```
+	* Again, `-threads 24` - adjust accordingly.
+* Now, we want to translate the Hebrew test set into English, and compare the translation to the 'original' translations:
+
+	```bash
+	nohup nice ~/mosesdecoder/bin/moses \
+	  -f ~/working/testing/filtered-testset/moses.ini \
+	  < ~/working/testing/testset.he \
+	  > ~/working/testing/testset.translated.en \
+	  2> ~/working/testing/moses-testset.out
+	```
+* So far we have the set we translated with Moses, and the one we got from 'outside', which is supposed to be very good. Let's test how good our translation is, in comparison with this 'very good' one, using BLEU evaluation:
+
+	```bash
+	~/mosesdecoder/scripts/generic/multi-bleu.perl \
+	  -lc ~/working/testing/testset.en \
+	  <~/working/testing/testset.translated.en
+	```
+	
