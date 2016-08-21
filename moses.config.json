@@ -1,7 +1,7 @@
 {
 	"name": "moses",
 	"host": "http://localhost:8080/RPC2",
-	"start_cmd": "~/mosesdecoder/bin/moses -f ~/working/binarised-model/moses.ini --daemon --server --server-log ~/moses.log 2>>~/moses.log",
+	"start_cmd": "( ~/mosesdecoder/bin/moses -f ~/working/binarised-model/moses.ini --daemon --server --server-log ~/moses.log 2>>~/moses.log & )",
 	"check_cmd": "pidof moses",
 
 	"tokenize_cmd": "~/mosesdecoder/scripts/tokenizer/tokenizer.perl -l en"
