@@ -234,4 +234,9 @@ For all the below steps - document each step, which files were used, which actio
 	  -lc ~/working/testing/testset.en \
 	  <~/working/testing/testset.translated.en
 	```
+	* The command should yield the following output (we should get a BLEU score of 30.31):
 	
+		```bash
+		$ ~/mosesdecoder/scripts/generic/multi-bleu.perl   -lc ~/working/testing/testset.en   <~/working/testing/testset.translated.en
+		BLEU = 30.31, 63.2/36.4/23.5/15.6 (BP=1.000, ratio=1.023, hyp_len=95620, ref_len=93431)
+		```
