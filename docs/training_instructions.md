@@ -36,7 +36,7 @@ For all the below steps - document each step, which files were used, which actio
 ### Prepare the corpus for Moses training:
 
 * Tutorial taken from the [Moses website](http://www.statmt.org/moses/?n=Moses.Baseline)
-	* In the tutorial, a French → English model was trained. We will train Hebrew → English instead.
+	* In the tutorial, a French to English model was trained. We will train Hebrew to English instead.
 	* Assuming Moses is installed in `~/mosesdecoder` directory.
 * Tokenize the sentences:
 
