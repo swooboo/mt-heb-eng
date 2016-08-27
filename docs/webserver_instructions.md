@@ -156,11 +156,11 @@ Should be also straight-forward, search somewhere in Routing options / Firewall 
 
 Run the following command from `S2`:
 
-	```bash
-	while true; do ssh -R :5000:localhost:5000 <user>@<S3> ;sleep 5m ;done
-	```
-	* Replace the <> values with the username and the domain of `S3`, for example moses@tr.swooboo.com
-	* This loops the SSH command indefinitely, every 5 minutes, trying to connect to `S3` and forward port `5000` to it
+```bash
+while true; do ssh -R :5000:localhost:5000 <user>@<S3> ;sleep 5m ;done
+```
+* Replace the <> values with the username and the domain of `S3`, for example moses@tr.swooboo.com
+* This loops the SSH command indefinitely, every 5 minutes, trying to connect to `S3` and forward port `5000` to it
 
 #### 7. Test the setup
 
