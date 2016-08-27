@@ -73,6 +73,7 @@ The Univerity server (`S1`) can be accessed directly from the Internet, but port
 	```bash
 	ssh -R :5000:localhost:5000 S1
 	```
+	* Note that this needs to be run from `S2`. A shell will be opened on `S1`, and that shell needs to stay opened.
 4. Now, ports are forwarded as follows:
 	* **laptop:80** <--> **S1:5000** <--> **S2:5000**
 5. As a result, surfing to http://127.0.0.1 gives the same result as if we surfed from `S2` to http://127.0.0.1:5000
