@@ -16,7 +16,8 @@ The front end of the project is a Flask-based web service, written in Python. Th
 1. Get the source code
 2. Apply the configurations
 3. Run the server
-4. (Optional) Set up SSH tunneling, in case the server is not exposed
+4. Set up Putty tunneling of the needed ports
+5. (Optional) Set up SSH tunneling, in case the server is not exposed
 
 ### Get the source code and apply configurations
 
@@ -56,7 +57,7 @@ The front end of the project is a Flask-based web service, written in Python. Th
 	* The pin code is for debugging. For example, http://127.0.0.1:5000/tr throws an exception and can be debugged live
 * The server will try to run Moses when a translation is queried, be sure Moses is well-trained and can be run in daemon-server mode. If any problems arise, try to run `start_cmd` from the `moses.config.json` manually to see the output, and note where the logs are written to.
 
-### (Optional) Set up SSH tunneling, in case the server is not exposed
+### Set up Putty tunneling of the needed ports
 
 In case the server is not exposed, and there is a need to make the service available to the Internet, we'll need some tricky SSH tunneling to be set up. Take a look at the configuration this project deployment needed to work with:
 
@@ -77,3 +78,8 @@ The Univerity server (`S1`) can be accessed directly from the Internet, but port
 5. As a result, surfing to http://127.0.0.1 gives the same result as if we surfed from `S2` to http://127.0.0.1:5000
 6. The problem with this setup is that the service is not accessible to the Internet, only to the `localhost` of the computer (the laptop in this case) that's connecting to the server.
 	* In order to make it accessible to the Internet, either the laptop should be exposed to the Internet, or another workstation that we have full control over needs to be configured to be accessible correctly from the outside. Check the next section for this solution.
+
+### (Optional) Set up SSH tunneling, in case the server is not exposed
+
+This section is a tutorial on how to make the service fully accessible to the Internet. The end result is the surfing to a domain http://tr.swooboo.com from **any** client would be the same as surfing to http://127.0.0.1:5000 from `S2`.
+
