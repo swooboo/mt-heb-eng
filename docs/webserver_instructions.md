@@ -82,5 +82,17 @@ The Univerity server (`S1`) can be accessed directly from the Internet, but port
 
 ### (Optional) Set up SSH tunneling, in case the server is not exposed
 
-This section is a tutorial on how to make the service fully accessible to the Internet. The end result is the surfing to a domain http://tr.swooboo.com from **any** client would be the same as surfing to http://127.0.0.1:5000 from `S2`.
+This section is a tutorial on how to make the service fully accessible to the Internet. The end result is the surfing to a domain http://tr.swooboo.com from **any** client would be the same as surfing to http://127.0.0.1:5000 from `S2`. We achieve this by setting up the following server configuration:
+
+**S1** <--> **S2** <--> **Owned server - S3** <--> Internet
+
+Or, if `S3` is behind a router:
+
+**S1** <--> **S2** <--> **Owned server - S3** <--> **Router - R1** <--> Internet
+
+Note that `S1` <--> `S2` is not important here, we only need it to access `S2`.
+
+Our game plan:
+
+1. 
 
