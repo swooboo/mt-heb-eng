@@ -55,3 +55,25 @@ The front end of the project is a Flask-based web service, written in Python. Th
 	* Note that the web server listens to port `5000`, the port should be available
 	* The pin code is for debugging. For example, http://127.0.0.1:5000/tr throws an exception and can be debugged live
 * The server will try to run Moses when a translation is queried, be sure Moses is well-trained and can be run in daemon-server mode. If any problems arise, try to run `start_cmd` from the `moses.config.json` manually to see the output, and note where the logs are written to.
+
+### (Optional) Set up SSH tunneling, in case the server is not exposed
+
+In case the server is not exposed, and there is a need to make the service available to the Internet, we'll need some tricky SSH tunneling to be set up. Take a look at the configuration this project deployment needed to work with:
+
+**University Server - `S1`** <--> **Service Server - `S2` (*has Internet access to outside, but not directly from outside*)**
+
+The Univerity server (`S1`) can be accessed directly from the Internet, but ports can not be opened on it to be available outside, as it was behind a firewall. S2 can also not open any ports to outside (only locally), but has Internet access. To access `S2` and deploy the server, we needed to initially access `S1`, then SSH to `S2`. [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) was used like this:
+
+1. Run Putty
+2. Set up a port forwarding with rule `L80	localhost:5000`
+	* This means that on the client machine (laptop), port 80 will be forwarded to the server machine (`S1`) port 5000.
+3. Tunnel port 5000 from `S2` to `S1`:
+
+	```bash
+	ssh -R :5000:localhost:5000 S1
+	```
+4. Now, ports are forwarded as follows:
+	* **laptop:80** <--> **S1:5000** <--> **S2:5000**
+5. As a result, surfing to http://127.0.0.1 gives the same result as if we surfed from `S2` to http://127.0.0.1:5000
+6. The problem with this setup is that the service is not accessible to the Internet, only to the `localhost` of the computer (the laptop in this case) that's connecting to the server.
+	* In order to make it accessible to the Internet, either the laptop should be exposed to the Internet, or another workstation that we have full control over needs to be configured to be accessible correctly from the outside. Check the next section for this solution.
