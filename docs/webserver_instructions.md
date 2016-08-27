@@ -94,5 +94,12 @@ Note that `S1` <--> `S2` is not important here, we only need it to access `S2`.
 
 Our game plan:
 
-1. 
+1. Tie `S3` to a domain name using Dynamic DNS (we'll use http://tr.swooboo.com for this example)
+2. Configure SSH daemon of `S3` to accept inbound tunneling of port `5000` (off by default)
+	* The tunnel should also open the port `5000` to the outside of `S3`, not only locally
+3. Configure the router to forward all connections to `S3` - set it to DMZ
+4. Set up port forwarding of port `80` of the router to `S3:5000`
+5. Set up SSH keys to be able to passwordlessly connect from `S2` to `S3`
+5. Tunnel `S2:5000` to `S3:5000`
+6. Enjoy the web service exposed at http://tr.swooboo.com
 
