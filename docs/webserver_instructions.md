@@ -103,3 +103,26 @@ Our game plan:
 5. Tunnel `S2:5000` to `S3:5000`
 6. Enjoy the web service exposed at http://tr.swooboo.com
 
+#### 1. Tie `S3` to a domain name using Dynamic DNS
+
+1. Register at http://internetbs.com
+2. Buy a domain, for our example I already had the domain http://swooboo.com
+3. Log in to Internet.bs and surf to the domain page
+4. Surf to 'DNS Management' ([link](https://internetbs.net/en/domain-name-registrations/controller.html?action=DNSManagementAction&clickIdTrack=2c1133138b86168daec905e2ed87aac2&manageDomainsViewMode=2&isJavascriptEnabled=1&reqkey=6ddc2509adb9be679e3219d0c6540dcd9c1f2bd4), hopefully it will work)
+5. Add the following entry to 'Dynamic DNS Records' (replace the <> values with custom ones):
+	* tr.swooboo.com | 60 | <empty 'Offline Address'> | <username> | <password>
+	* Note: username and password are irrelevant, they just need to be remembered for a couple of minutes
+6. Click on 'Apply' - floppy disk icon near our newly added entry
+7. Add a cron in `S3`:
+
+```bash
+crontab -e
+```
+8. The following cron should be added:
+
+	```
+	*/5 * * * * ( date ;curl 'https://dyndns.topdns.com/update?hostname=tr.swooboo.com&username=<username>&password=<password>' ;echo ) >> /tmp/dyndns.log
+	```
+	* Replace the <> values with the username and the password that were set in the Dynamic DNS entry
+	* This will make `S3` fire the `dyndns` URL every 5 minutes. Every time the URL is fired, Internet.bs will update the http://tr.swooboo.com domain address with the IP of `S3`, so if the IP changes, it will take up to 5 minutes for it tu update.
+9. Now, if the domain is pinged - `ping tr.swooboo.com`, the IP will be that of `S3` regardless of IP change
