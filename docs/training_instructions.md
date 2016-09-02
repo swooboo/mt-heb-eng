@@ -1,4 +1,4 @@
-# How to train Moses so this translator works:
+# How to train your Moses:
 
 For all the below steps - document each step, which files were used, which actions, etc.
 
