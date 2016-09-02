@@ -62,7 +62,7 @@ Below are short overviews of each file. Only object / function signatures are me
 
 3. `moses.config.json`
 
-	```python
+	```json
 	{
 		"start_cmd": "( ~/mosesdecoder/bin/moses -f ~/working/binarised-model/moses.ini --daemon --server --server-log ~/moses.log 2>>~/moses.log & )",
 		"check_cmd": "pidof moses"
@@ -102,7 +102,7 @@ Below are short overviews of each file. Only object / function signatures are me
 
 7. `static/keyboard.js`
 
-	```javasctipt
+	```js
 	str = 'aשbנcבdגeקfכgעhיiןjחkלlךmצnמoםpפq/rרsדtאuוvהw\'xסyטzז,ת.ץ/.;ף\','; // Preparing character transliteration
 	
 	defer(function(){ // Waiting for jQuery
@@ -115,7 +115,7 @@ Below are short overviews of each file. Only object / function signatures are me
 
 8. `static/main.js`
 
-	```javascrtpt
+	```js
 	defer(function(){ // Waiting for jQuery
 		$("form#tr").submit(function(){	// Don't submit form, instead send AJAX to retrieve translation
 			$.ajax({
