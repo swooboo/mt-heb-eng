@@ -1,6 +1,8 @@
 # How to train your Moses:
 
-For all the below steps - document each step, which files were used, which actions, etc.
+Below are the instructions for training the translation model. Important notice - if you're reading this as a PDF, the copy-paste of code segments won't work. Instead, please copy the code from the document on which this PDF is based off - [training_instructions.md](https://github.com/swooboo/mt-heb-eng/blob/master/docs/training_instructions.md)
+
+The whole process is semi-automatic, just copy the code into a Bash shell, and execute. There's no need for human intervention. Also, it's important to document each step if there is a deviation from this tutorial, for example, if another parallel text is used, the files and their roles should be listed. Same for pre-processing, tokenizing, translation training flags.
 
 ### Download and clean the corpus:
 
