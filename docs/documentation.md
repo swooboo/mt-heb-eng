@@ -35,9 +35,14 @@ The front end consists of the following files:
 
 Additionally, `xcleanup.sh` is a Bash script that makes it easy to pre process the parallel texts taken from the TED talks - basic XML-like tags clean up.
 
-Below are short overviews of each file.
+Below are short overviews of each file. Only object / function signatures are mentioned, along with some code. Note that not all the implementation is listed.
 
 1. `decoder.py`
 ```python
-
+class Decoder:
+	def __init__(self):
+	def init_server(self, config):
+		self.server = xmlrpclib.ServerProxy(config['host']) # Created a server object for the decoder
+	def decode(self, tokens):
+		translation = self.server.translate({'text': tokens})
 ```
