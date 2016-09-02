@@ -150,10 +150,24 @@ Below are short overviews of each file. Only object / function signatures are me
 	if __name__ == "__main__":
 	```
 
+Additionally, `xcleanup.sh` Bash script:
+
+```bash
+function xclean {
+	cat $1 |sed 's/<\(url\|talkid\|keywords\)>.*<\/\1>//g' |sed 's/<[^>]*>//g'
+}
+
+function xcleanout {
+}
+xcleanout	# Run the main function
+```
+
 ### 4. Training the Moses translator
 
 Statistical translation model training is described in-depth in the (https://github.com/swooboo/mt-heb-eng/blob/staging/docs/training_instructions.md)[training_instructions.md] file. Actually, one can follow the instructions there, and get a translation model. The tutorial is semi-automatic, meaning only copy-paste and execution needed, almost no human intervention.
 
 In short, Moses gets parallel texts (pairs of sentences in the two languages), and trains to be able to translate other sentences using statistical translation model approach. So the gist of the process - get the parallel text, feed it to Moses, then get the translation model.
 
+### 5. Final web server and translation server daemon setup
 
+Web server setup is described in-depth in the (https://github.com/swooboo/mt-heb-eng/blob/staging/docs/webserver_instructions.md)[webserver_instructions.md] file. In short, we want to run a web server on a non-exposed to the Internet machine. (The machine has access to the Internet, but behind a firewall, so no ports opening) In order to achieve that, somewhat clever SSH tunneling needs to be set up, as well as DNS management.
