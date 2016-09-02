@@ -95,8 +95,8 @@ Below are short overviews of each file. Only object / function signatures are me
 			<form id="tr">
 				<textarea id="source" data-keyboard="he"></textarea>
 			</form>
-	
 		</body>
+		<script src="keyboard.js" type="text/javascript"></script>
 	</html>
 	```
 
