@@ -38,11 +38,116 @@ Additionally, `xcleanup.sh` is a Bash script that makes it easy to pre process t
 Below are short overviews of each file. Only object / function signatures are mentioned, along with some code. Note that not all the implementation is listed.
 
 1. `decoder.py`
-```python
-class Decoder:
-	def __init__(self):
-	def init_server(self, config):
-		self.server = xmlrpclib.ServerProxy(config['host']) # Created a server object for the decoder
-	def decode(self, tokens):
-		translation = self.server.translate({'text': tokens})
-```
+
+	```python
+	class Decoder:
+		def __init__(self):
+		def init_server(self, config):
+			self.server = xmlrpclib.ServerProxy(config['host']) # Created a server object for the decoder
+		def decode(self, tokens):
+			translation = self.server.translate({'text': tokens})
+	```
+
+2. `main.py` 
+
+	```python
+	from pre_process import pre_process
+	from decoder import Decoder
+	from post_process import post_process
+	
+	def translate(sentence):
+	if(__name__ == '__main__'):
+		print(translate(sentence))
+	```
+
+3. `moses.config.json`
+
+	```python
+	{
+		"start_cmd": "( ~/mosesdecoder/bin/moses -f ~/working/binarised-model/moses.ini --daemon --server --server-log ~/moses.log 2>>~/moses.log & )",
+		"check_cmd": "pidof moses"
+	}
+	```
+
+4. `post_process.py` (This is only echo back, no logic here yet)
+
+	```python
+	def post_process(sentence):
+		return sentence
+	```
+
+5. `pre_process.py`
+
+	```python
+	def pre_process(sentence):
+		with open('moses.config.json') as config_file:
+		tokenized_sentence = p.communicate(input=sentence.encode('utf8'))[0]
+		return tokenized_sentence
+	```
+
+6. `static/index.html`
+
+	```html
+	<html>
+		<head>
+		</head>
+		<body>
+			<form id="tr">
+				<textarea id="source" data-keyboard="he"></textarea>
+			</form>
+	
+		</body>
+	</html>
+	```
+
+7. `static/keyboard.js`
+
+	```javasctipt
+	str = 'aשbנcבdגeקfכgעhיiןjחkלlךmצnמoםpפq/rרsדtאuוvהw\'xסyטzז,ת.ץ/.;ף\','; // Preparing character transliteration
+	
+	defer(function(){ // Waiting for jQuery
+		$("[data-keyboard=he]").keypress(function(evt) { // Overriding default key press to transliterate English key strokes to hebrew letters
+		});
+		$.prototype.paste = function(text){	// Defining a function that will paste into text areas, respecting selection
+		};
+	});
+	```
+
+8. `static/main.js`
+
+	```javascrtpt
+	defer(function(){ // Waiting for jQuery
+		$("form#tr").submit(function(){	// Don't submit form, instead send AJAX to retrieve translation
+			$.ajax({
+				url: "/tr",
+			});
+		});
+	});
+	```
+
+9. `static/style.css`
+
+	```css
+	#source{ direction: rtl; }
+	form#tr{ height: 50px; }
+	form#tr>*, form#tr textarea{ height: 100%; }
+	form#tr textarea{ width: 300px; }
+	```
+
+10. `webserver.py`
+
+	```python
+	from main import translate
+	from flask import Flask, request, json
+	
+	@app.route("/tr", methods=['POST', 'GET'])
+	def tr():
+		try:
+			sentence = translate(sentence)	# Translating from the main.translate() function.
+		except socket_error as error:
+			print "Exception when translating '" + sentence + "', socket_error: " + str(error)
+	
+	if __name__ == "__main__":
+	```
+
+
