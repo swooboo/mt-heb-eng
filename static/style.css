@@ -3,13 +3,28 @@
 }
 
 form#tr{
-	height: 50px;
-}
-
-form#tr>*, form#tr textarea{
-	height: 100%;
+	height: 100px;
+	width: 100%;
+	margin: 1.5%;
 }
 
 form#tr textarea{
-	width: 300px;
+	height: 100%;
+	width: 42%;
+}
+
+
+form#tr textarea{
+	/*width: 300px;*/
+	display: inline-block;
+}
+form#tr input#go{
+	display: inline-block;
+	top: -67px;
+	position: relative;
+	margin: 1%;
+	width: 10%;
+	height: 100%;
+	font-size: 15px;
+	padding: 0;
 }
