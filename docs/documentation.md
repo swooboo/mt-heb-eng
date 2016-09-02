@@ -171,3 +171,7 @@ In short, Moses gets parallel texts (pairs of sentences in the two languages), a
 ### 5. Final web server and translation server daemon setup
 
 Web server setup is described in-depth in the [webserver_instructions.md](https://github.com/swooboo/mt-heb-eng/blob/staging/docs/webserver_instructions.md) file. In short, we want to run a web server on a non-exposed to the Internet machine. (The machine has access to the Internet, but behind a firewall, so no ports opening) In order to achieve that, somewhat clever SSH tunneling needs to be set up, as well as DNS management.
+
+### In conclusion
+
+The next two sections are the aforementioned `*_instructions.md` files, that give an in-depth tutorial on how to jump-start this system. If only translation model training is needed, the web server setup may be skipped.
