@@ -23,10 +23,9 @@ defer(function(){ // Waiting for jQuery
 
 	// Adding a checkbox to turn transliteration off if needed
 	$("[data-keyboard=he]")
-		.wrap("<div style='display: inline-block; position: relative;' class='keyboard-wrapper'>")	// Wrapping the inputs with the div
-		.after("<input type='checkbox' style='position: absolute; bottom:5px; left: 5px; opacity: 0.5;' checked='true'>")	// Adding the checkbox
-		.after("<label style='position: absolute; bottom:5px; left: 25px; opacity: 0.5;' >a→ש</label>");	// Adding the label for it
-	$(".keyboard-wrapper input").click(function(){
+		.after("<input class='keyboard-toggle' type='checkbox' style='position: absolute; bottom:52%; left: 5px; opacity: 0.5;' checked='true'>")	// Adding the checkbox
+		.after("<label style='position: absolute; bottom:51%; left: 25px; margin:0; opacity: 0.5;' >a→ש</label>");	// Adding the label for it
+	$("input.keyboard-toggle").click(function(){
 		$(this).parent().find("[data-keyboard=he]").toggleClass("suppress-keyboard");	// Adding class to cancel transliteration	
 	});
 
