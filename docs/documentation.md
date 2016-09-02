@@ -16,7 +16,7 @@ This is a statistical translation frontend, written with Python+Flask bundle. Ba
 
 ### 2. Overview of the architecture
 
-#### TODO: Add diagrams
+#### <red>TODO: Add diagrams</re>
 
 ### 3. Overview of the code
 
@@ -149,5 +149,11 @@ Below are short overviews of each file. Only object / function signatures are me
 	
 	if __name__ == "__main__":
 	```
+
+### 4. Training the Moses translator
+
+Statistical translation model training is described in-depth in the (https://github.com/swooboo/mt-heb-eng/blob/staging/docs/training_instructions.md)[training_instructions.md] file. Actually, one can follow the instructions there, and get a translation model. The tutorial is semi-automatic, meaning only copy-paste and execution needed, almost no human intervention.
+
+In short, Moses gets parallel texts (pairs of sentences in the two languages), and trains to be able to translate other sentences using statistical translation model approach. So the gist of the process - get the parallel text, feed it to Moses, then get the translation model.
 
 
