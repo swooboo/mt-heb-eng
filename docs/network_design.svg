@@ -1,12 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 100 100">
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+ <title>Project Design</title>
 
-	<title>Network Design</title>
-
-	<rect
-		id="background"
-		fill="#FF9900"
-		width="100"
-		height="100"
-		rx="4"
-		ry="4"/>
+ <g>
+		<title>Layer 1</title>
+		<rect rx="10" id="svg_67" height="347.38127" width="374.70181" y="28.07966" x="394.94684" fill-opacity="0.5" stroke-width="2" stroke="#00007f" fill="#ff9900"/>
+		<rect rx="10" id="svg_2" height="148.14113" width="148.14113" y="80.07406" x="604.94212" fill-opacity="null" stroke-width="2" stroke="#00007f" fill="#FF9900"/>
+		<text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_3" y="96.93601" x="628.5974" fill-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">yg-srv1</text>
+		<text transform="matrix(0.934879, 0, 0, 1, 38.081, 0)" xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_9" y="177.71091" x="585.51007" fill-opacity="0.8" stroke-width="0" stroke="#00007f" fill="#000000"/>
+		<text xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_60" y="148.57058" x="643.19059" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">Moses</text>
+		<text xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_61" y="182.55937" x="643.00173" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">Flask</text>
+		<rect rx="10" id="svg_63" height="148.14113" width="148.14113" y="80.07406" x="404.94212" fill-opacity="null" stroke-width="2" stroke="#00007f" fill="#FF9900"/>
+		<text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_64" y="96.93601" x="464.76378" fill-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">u2</text>
+		<rect id="svg_66" height="0" width="0.66636" y="209.87525" x="395.66871" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="#FF9900"/>
+		<text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_68" y="46.93601" x="464.76378" fill-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">University network</text>
+		<ellipse ry="10.3285" rx="10.3285" id="svg_69" cy="323.48879" cx="576.58411" fill-opacity="0.5" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="#ff9900"/>
+		<text xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_70" y="330.48552" x="594.24252" fill-opacity="0.5" stroke-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">Firewall</text>
+		<line stroke-linecap="null" stroke-linejoin="null" id="svg_71" y2="315.08945" x2="569.5874" y1="228.41669" x1="502.95188" fill-opacity="0.5" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="none"/>
+		<line stroke-linecap="null" stroke-linejoin="null" id="svg_72" y2="314.23706" x2="582.91449" y1="228.264" x1="650.88271" fill-opacity="0.5" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="none"/>
+		<ellipse ry="28.98645" rx="128.60653" id="svg_74" cy="552.71494" cx="600.23971" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="#b2b2b2"/>
+		<text xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_75" y="555.04718" x="530.27243" stroke-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">Internet</text>
+		<line stroke-linecap="null" stroke-linejoin="null" id="svg_76" y2="525.0886" x2="576.25093" y1="333.81729" x1="576.25093" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="none"/>
+		<text xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_77" y="440.43411" x="493.59486" stroke-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">(Only outbound)</text>
+		<rect rx="10" id="svg_78" height="347.38127" width="192.12052" y="28.07966" x="52.94778" fill-opacity="0.5" stroke-width="2" stroke="#00007f" fill="#ff9900"/>
+		<text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_79" y="46.93601" x="62.62066" fill-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">Home network</text>
+		<rect rx="10" id="svg_80" height="25.53179" width="148.14113" y="310.07405" x="74.94212" fill-opacity="null" stroke-width="2" stroke="#00007f" fill="#FF9900"/>
+		<text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_81" y="326.93601" x="91.94492" fill-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">M+Router</text>
+		<rect rx="10" id="svg_82" height="25.53179" width="148.14113" y="240.07405" x="74.94212" fill-opacity="null" stroke-width="2" stroke="#00007f" fill="#FF9900"/>
+		<text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_83" y="256.93601" x="105.95505" fill-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">Router</text>
+		<rect rx="10" id="svg_84" height="122.15326" width="148.14113" y="70.07406" x="74.94212" fill-opacity="null" stroke-width="2" stroke="#00007f" fill="#FF9900"/>
+		<text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_85" y="96.93601" x="113.14613" fill-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">Black</text>
+		<line stroke-linecap="null" stroke-linejoin="null" id="svg_86" y2="239.56805" x2="145.78555" y1="193.21637" x1="145.78555" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="none"/>
+		<line stroke-linecap="null" stroke-linejoin="null" id="svg_87" y2="309.56805" x2="145.78555" y1="266.54815" x1="145.78555" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="none"/>
+		<line stroke-linecap="null" stroke-linejoin="null" id="svg_88" y2="552.83758" x2="145.1192" y1="335.81636" x1="145.1192" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="none"/>
+		<line stroke-linecap="null" stroke-linejoin="null" id="svg_89" y2="553.71447" x2="144.0638" y1="553.71447" x1="472.96589" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="none"/>
+		<line stroke-dasharray="5,5" stroke-linecap="null" stroke-linejoin="null" id="svg_90" y2="542.79681" x2="510.94351" y1="227.59763" x1="613.5622" fill-opacity="0.5" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="none"/>
+		<line stroke-dasharray="5,5" stroke-linecap="null" stroke-linejoin="null" id="svg_92" y2="541.72008" x2="155.95657" y1="541.72008" x1="510.94813" fill-opacity="0.5" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="none"/>
+		<line stroke-dasharray="5,5" stroke-linecap="null" stroke-linejoin="null" id="svg_94" y2="192.85745" x2="157.11359" y1="542.38643" x1="157.11359" fill-opacity="0.5" stroke-opacity="null" stroke-width="2" stroke="#00007f" fill="none"/>
+		<text xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_95" y="533.06213" x="171.09302" fill-opacity="0.5" stroke-opacity="null" stroke-width="0" stroke="#00007f" fill="#000000">SSH Tunnel port 5000</text>
+ </g>
 </svg>
