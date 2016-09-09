@@ -1,4 +1,4 @@
-# Statistical Translation System
+# Aleph-null Statistical Translation System
 
 ## Abstract
 
