@@ -14,7 +14,7 @@ What this document covers:
 
 This is a statistical translation frontend, written with Python+Flask bundle. Basically, the purpose of the whole system is to provide an easy and access to the translation server daemon running in the backgroun on the server side of the application. In short, we get a Google Translate like web page.
 
-### 2. Overview of the architecture
+### 2. Overview of the network structure and solution architecture
 
 #### <red>TODO: Add diagrams</re>
 
