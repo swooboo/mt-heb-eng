@@ -18,11 +18,11 @@ This is a statistical translation frontend, written with Python+Flask bundle. Ba
 
 #### Project design
 
-![image](https://rawgit.com/swooboo/mt-heb-eng/docs-svg/docs/project_design.svg)
+![image](https://rawgit.com/swooboo/mt-heb-eng/master/docs/project_design.svg)
 
 #### Network design
 
-![image](https://rawgit.com/swooboo/mt-heb-eng/docs-svg/docs/network_design.svg)
+![image](https://rawgit.com/swooboo/mt-heb-eng/master/docs/network_design.svg)
 
 ### 3. Overview of the code
 
