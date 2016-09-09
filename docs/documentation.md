@@ -16,7 +16,7 @@ This is a statistical translation frontend, written with Python+Flask bundle. Ba
 
 ### 2. Overview of the network structure and solution architecture
 
-#### Network design
+#### Project design
 
 ![image](https://rawgit.com/swooboo/mt-heb-eng/docs-svg/docs/project_design.svg)
 
